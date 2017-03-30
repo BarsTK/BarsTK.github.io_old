@@ -1,19 +1,19 @@
-function add(a, b){ 
+function add(a, b) { 
   return a + b;
 }
-function sub(a, b){ 
+function sub(a, b) { 
   return a - b;
 }
-function mul(a, b){ 
+function mul(a, b) { 
   return a * b;
 }
-function div(a, b){ 
+function div(a, b) { 
   return a / b;
 }
 function divInt(a, b){ 
-  return Math.floor(Math.floor(a) / Math.floor(b));
+  return Math.trunc(Math.trunc(a) / Math.trunc(b));
 }
-function calculate(a, b, oper){ 
+function calculate(a, b, oper) { 
   switch (oper) {
   case "add":
     alert(add(a, b));

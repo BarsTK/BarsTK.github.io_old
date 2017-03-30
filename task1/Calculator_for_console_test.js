@@ -12,14 +12,14 @@ function mul(a, b){
   return a * b;
 }
 function divInt(a, b){ 
-  return Math.floor(Math.floor(a) / Math.floor(b));
+  return Math.trunc(Math.trunc(a) / Math.trunc(b));
 }
 
-alert("Test of function add(a, b) with difference parameters");
+console.log("Test of function add(a, b) with difference parameters");
 console.log(add(3.1, 5));
 console.log(add(3.1, true));
 console.log(add(3.1, 2.6));
-console.log(add(3.1, -2));
+console.log(add(-3.1, -2));
 console.log(add(3.1, '-2'));
 console.log(add('3.1', 2));
 console.log(add('5.96'));
@@ -34,7 +34,7 @@ console.log("Test of function sub(a, b) with difference parameters");
 console.log(sub(3.1, 5));
 console.log(sub(3.1, true));
 console.log(sub(3.1, 2.6));
-console.log(sub(3.1, -2));
+console.log(sub(-3.1, -2));
 console.log(sub(3.1, '-2'));
 console.log(sub('3.1', 2));
 console.log(sub('5.96'));
@@ -49,7 +49,7 @@ console.log("Test of function div(a, b) with difference parameters");
 console.log(div(3.1, 5));
 console.log(div(3.1, true));
 console.log(div(3.1, 2.6));
-console.log(div(3.1, -2));
+console.log(div(-3.1, -2));
 console.log(div(3.1, '-2'));
 console.log(div('3.1', 2));
 console.log(div('5.96'));
@@ -64,7 +64,7 @@ console.log("Test of function mul(a, b) with difference parameters");
 console.log(mul(3.1, 5));
 console.log(mul(3.1, true));
 console.log(mul(3.1, 2.6));
-console.log(mul(3.1, -2));
+console.log(mul(-3.1, -2));
 console.log(mul(3.1, '-2'));
 console.log(mul('3.1', 2));
 console.log(mul('5.96'));
@@ -79,7 +79,7 @@ console.log("Test of function divInt(a, b) with difference parameters");
 console.log(divInt(3.1, 5));
 console.log(divInt(3.1, true));
 console.log(divInt(3.1, 2.6));
-console.log(divInt(3.1, -2));
+console.log(divInt(-3.1, -2));
 console.log(divInt(3.1, '-2'));
 console.log(divInt('3.1', 2));
 console.log(divInt('5.96'));
