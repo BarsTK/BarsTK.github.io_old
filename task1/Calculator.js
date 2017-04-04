@@ -11,7 +11,7 @@ function div(a, b) {
   return a / b;
 }
 function divInt(a, b){ 
-  return Math.trunc(Math.trunc(a) / Math.trunc(b));
+  return Math.trunc(a / b);
 }
 function calculate(a, b, oper) { 
   switch (oper) {

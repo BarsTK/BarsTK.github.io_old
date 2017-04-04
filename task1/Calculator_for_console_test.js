@@ -1,6 +1,5 @@
 function add(a, b){ 
   return a + b;
- console.log(add(a, b));
 }
 function sub(a, b){ 
   return a - b;
@@ -12,7 +11,7 @@ function mul(a, b){
   return a * b;
 }
 function divInt(a, b){ 
-  return Math.trunc(Math.trunc(a) / Math.trunc(b));
+  return Math.trunc(a / b);
 }
 
 console.log("Test of function add(a, b) with difference parameters");
