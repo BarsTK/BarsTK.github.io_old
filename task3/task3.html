@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- perform binary search in sorted number array-->
+  <meta charset="utf-8">
+  <script type="text/javascript">
+    function binSearch(a, b) {
+      var x = a.split(',');
+      var len = x.length;
+      const ascFlag = (+x[0] < +x[len - 1]);
+      const diffIdxPos = 1;
+      var lIdx = 0;
+      var rIdx = len - 1;
+      var searchedIdx = -1;
+      var lenHalf;
+      var comparingResult;
+
+      while (lIdx != rIdx) {
+        lenHalf= Math.floor(len / 2);
+        comparingResult = (ascFlag ? (+b > +x[lIdx + lenHalf - diffIdxPos]) : 
+                                      (+b < +x[lIdx + lenHalf - diffIdxPos]));
+        if (comparingResult) {
+          lIdx += lenHalf;
+        } else {
+            rIdx -= lenHalf;
+        }
+        len = (rIdx + diffIdxPos) - lIdx;
+        if (lIdx == rIdx && +b == +x[lIdx]) {
+          searchedIdx = lIdx;
+        }
+      }
+      return searchedIdx;
+    }
+
+    function execBinSearch() {
+      var arr = document.getElementById("values").value;
+      var val = document.getElementById("number").value;
+      const result = binSearch(arr, val);
+      
+      alert(result == -1 ? "Element is not found" :"Searched number is in position with index = " + result);
+    }
+  </script>
+</head>
+<body>
+  <h1>Search index of element by value</h1>
+  Input elements of array separated by comma
+  <input type="text" name="arrValues" id="values"></input> &nbsp;
+  What to look for?
+  <input type="text" name="searchNumb" id="number"></input>
+  <input type="button" value="calculate" onclick="execBinSearch()"></input>
+</body>
+</html>
