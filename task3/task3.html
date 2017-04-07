@@ -14,7 +14,10 @@
       var searchedIdx = -1;
       var lenHalf;
       var comparingResult;
-
+      
+      if (ascFlag ? (+b < +x[0]) && (+b > +x[len -1]) : (+b > +x[0]) && (+b < +x[len -1])) {
+        return searchedIdx;
+      }
       while (lIdx != rIdx) {
         lenHalf= Math.floor(len / 2);
         comparingResult = (ascFlag ? (+b > +x[lIdx + lenHalf - diffIdxPos]) : 
