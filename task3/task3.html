@@ -6,7 +6,8 @@
   <script src="search.js"></script>
   <script type="text/javascript">
     function execBinSearch() {
-      var arr = document.getElementById("values").value;
+      var arrIn = document.getElementById("values").value;
+      var arr = arrIn.split(',');
       var val = document.getElementById("number").value;
       const result = binSearch(arr, val);
       
