@@ -1,29 +1,34 @@
 function binSearch(arr, searchNumb) {
+  const DIFF_IDX_POS = 1;
   var len = arr.length;
-  const ascFlag = (arr[0] < arr[len - 1]);
-  const diffIdxPos = 1;
   var leftIdx = 0;
   var rightIdx = len - 1;
   var searchedIdx = -1;
   var lenHalf;
   var comparingResult;
   
-  if (ascFlag ? (searchNumb < arr[0]) && (searchNumb > arr[len - diffIdxPos]) : 
-                (searchNumb > arr[0]) && (searchNumb < arr[len - diffIdxPos])) {
+  if (len == 0) {
+    return searchedIdx;
+  }
+  
+  const ASC_FLAG = arr[0] < arr[len - 1];
+  
+  if (ASC_FLAG ? (searchNumb < arr[0]) && (searchNumb > arr[len - DIFF_IDX_POS]) : 
+                              (searchNumb > arr[0]) && (searchNumb < arr[len - DIFF_IDX_POS])) {
     return searchedIdx;
   }
   while (leftIdx != rightIdx) {
     lenHalf= Math.floor(len / 2);
-    comparingResult = (ascFlag ? (searchNumb > arr[leftIdx + lenHalf - diffIdxPos]) : 
-                                  (searchNumb < arr[leftIdx + lenHalf - diffIdxPos]));
+    comparingResult = (ASC_FLAG ? (searchNumb > arr[leftIdx + lenHalf - DIFF_IDX_POS]) : 
+                                  (searchNumb < arr[leftIdx + lenHalf - DIFF_IDX_POS]));
     if (comparingResult) {
       leftIdx += lenHalf;
     } else {
         rightIdx -= lenHalf;
     }
-    len = (rightIdx + diffIdxPos) - leftIdx;
+    len = (rightIdx + DIFF_IDX_POS) - leftIdx;
   }
-  if (leftIdx == rightIdx && searchNumb == arr[leftIdx]) {
+  if (leftIdx == rightIdx && searchNumb === arr[leftIdx]) {
     searchedIdx = leftIdx;
   }
   return searchedIdx;
