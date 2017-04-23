@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- perform binary search in sorted number array-->
+  <meta charset="utf-8">
+  <script src="search.js"></script>
+  <script type="text/javascript">
+    function execBinSearch() {
+      var arrIn = document.getElementById("values").value;
+      var arr = arrIn.split(',');
+      var val = document.getElementById("number").value;
+      const RESULT = binSearch(arr, +val);
+      
+      alert(RESULT == -1 ? "Element is not found" : "Searched number is in position with index = " + RESULT);
+    }
+  </script>
+</head>
+<body>
+  <h1>Search index of element by value</h1>
+  Input elements of array separated by comma
+  <input type="text" name="arrValues" id="values"></input> &nbsp;
+  What to look for?
+  <input type="text" name="searchNumb" id="number"></input>
+  <input type="button" value="calculate" onclick="execBinSearch()"></input>
+</body>
+</html>
