@@ -135,16 +135,16 @@ function excludeLast2v(arr, numbExcludeElems) {
 }
 
 function excludeLast3v(arr, numbExcludeElems) {
-  //let arrResult = arr.slice();
+  const NUMB_ZERO = 0;
   let excludeNumb = 1;
 
-  if (isNumeric(numbExcludeElems) && numbExcludeElems >= 0) {
+  if (isNumeric(numbExcludeElems) && numbExcludeElems >= NUMB_ZERO) {
     excludeNumb = numbExcludeElems;
   }
   let endIndex = arr.length - excludeNumb;
-  if (endIndex < 0) {
-    endIndex = 0;
+  if (endIndex < NUMB_ZERO) {
+    endIndex = NUMB_ZERO;
   }
-  let arrResult = arr.slice(0, endIndex);
+  let arrResult = arr.slice(NUMB_ZERO, endIndex);
   return arrResult;
 }
