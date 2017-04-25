@@ -11,29 +11,32 @@ function isNumeric(arg) {
 }
 
 function range(lengthFrom, toNumb, stepNumb) {
-  const DIF_IDX_ELEM = 1;
-  const NUM_ZERO = 0;
   let arrResult = [];
   let from = 0;
   let to;
   let step = 1;
 
-  if (isNumeric(lengthFrom) && lengthFrom > NUM_ZERO) {
-    if (isNumeric(toNumb) && toNumb > NUM_ZERO) {
-      from = Math.floor(+lengthFrom);
-      to = Math.floor(+toNumb);
+  if (isNumeric(lengthFrom)) {
+    if (isNumeric(toNumb)) {
+      from = +lengthFrom;
+      to = +toNumb;
     } else {
       from = 0;
-      to = Math.floor(+lengthFrom) - DIF_IDX_ELEM;
+      to = lengthFrom;
     }
-    if (isNumeric(stepNumb) && stepNumb > NUM_ZERO) {
-      step = Math.floor(+stepNumb);
+    if (isNumeric(stepNumb)) {
+      step = +stepNumb;
     }
-    for (let i = from; i < to; i += step) {
-      arrResult.push(i);
+    while ((to > from && step > 0) || (to < from && step < 0)) {
+      arrResult.push(from);
+      from += step;
     }
   }
   return arrResult;
+}
+
+function isTruth(value) {
+  return value == true;
 }
 
 function compact1v(arr) {
@@ -41,16 +44,12 @@ function compact1v(arr) {
 
     if (isArray1v(arr)) {
       for (let i = 0; i < arr.length; i++) {
-        if (arr[i] !== undefined && arr[i] !== null && arr[i] !== '' && arr[i] !== Infinity && arr[i] !== false) {
+        if (isTruth(arr[i])) {
           arrResult.push(arr[i]);
         }
       }
     }
   return arrResult;
-}
-
-function isTruth(value) {
-  return value !== undefined && value !== null && value !== '' && value !== Infinity && value !== false;
 }
 
 function compact2v(arr) {
@@ -68,8 +67,28 @@ function sum1v(arr) {
   return sum;
 }
 
+//It doesn't work for missed or wrong elements
 function sum2v(arr) {
-  return arr.length !== 0 ? arr.pop() + sum2v(arr) : 0;
+  const LENGTH_WITH_ADD_PAR = 2;
+  const IDX_ADD_PAR = 1;
+  const DIF_IDX_ELEM = 1;
+  const LAST_IDX = arr.length - DIF_IDX_ELEM;
+  
+  function summ(array) { //I entered inner function to not create constants every itself calling
+    let curIdx = 0;
+  
+    if (arguments.length == LENGTH_WITH_ADD_PAR) {
+      curIdx = arguments[IDX_ADD_PAR];
+    }
+    return curIdx <= LAST_IDX ? arr[curIdx] + summ(arr, curIdx + 1) : false;
+  }
+  return summ(arr);
+}
+
+function sum3v(arr) {
+  return arr.reduce(function(acc, val) {
+                      return acc + val;
+                    });
 }
 
 function unique1v(arr) {
@@ -84,27 +103,18 @@ function unique1v(arr) {
   return arrResult;
 }
 
-function unique2v(arr) {
-  var obj = {};
-
-  for (let i = 0; i < arr.length; i++) {
-    let elem = arr[i];
-    obj[elem] = true;
-  }
-  return Object.keys(obj); //keys are ordered string elements
-}
-
 function last(arr) {
   return arr[arr.length - 1];
 }
 
 function excludeLast1v(arr, numbExcludeElems) {
-  let arrResult = arr;
+  const LENGTH_ARRAY = arr.length;
+  let arrResult = arr.slice();
   let excludeNumb = 1;
-  let lastIndex = arr.length - 1;
+  let lastIndex = LENGTH_ARRAY - 1;
 
   if (isNumeric(numbExcludeElems) && numbExcludeElems >= 0) {
-    excludeNumb = numbExcludeElems > arr.length ? arr.length : numbExcludeElems;;
+    excludeNumb = numbExcludeElems > LENGTH_ARRAY ? LENGTH_ARRAY : numbExcludeElems;;
   }
   for (let i = lastIndex; i > lastIndex - excludeNumb; i--) {
     arrResult.pop();
@@ -113,27 +123,28 @@ function excludeLast1v(arr, numbExcludeElems) {
 }
 
 function excludeLast2v(arr, numbExcludeElems) {
-  let arrResult = arr;
+  const LENGTH_ARRAY = arr.length;
+  let arrResult = arr.slice();
   let excludeNumb = 1;
 
   if (isNumeric(numbExcludeElems) && numbExcludeElems >= 0) {
-    excludeNumb = numbExcludeElems > arr.length ? arr.length : numbExcludeElems;
+    excludeNumb = numbExcludeElems > LENGTH_ARRAY ? LENGTH_ARRAY : numbExcludeElems;
   }
   arrResult.length = arr.length - excludeNumb;
   return arrResult;
 }
 
 function excludeLast3v(arr, numbExcludeElems) {
-  let arrResult = arr;
+  //let arrResult = arr.slice();
   let excludeNumb = 1;
 
   if (isNumeric(numbExcludeElems) && numbExcludeElems >= 0) {
     excludeNumb = numbExcludeElems;
   }
-  let fromIndex = arr.length - excludeNumb;
-  if (fromIndex < 0) {
-    fromIndex = 0;
+  let endIndex = arr.length - excludeNumb;
+  if (endIndex < 0) {
+    endIndex = 0;
   }
-  arrResult.splice(fromIndex);
+  let arrResult = arr.slice(0, endIndex);
   return arrResult;
 }
