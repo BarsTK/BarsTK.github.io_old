@@ -1,3 +1,5 @@
+'use strict';
+
 function isArray1v(arg) {
   return Object.prototype.toString.call(arg) === '[object Array]';
 }
@@ -35,27 +37,10 @@ function range(lengthFrom, toNumb, stepNumb) {
   return arrResult;
 }
 
-function isTruth(value) {
-  return value == true;
-}
-
-function compact1v(arr) {
-  let arrResult = [];
-
-    if (isArray1v(arr)) {
-      for (let i = 0; i < arr.length; i++) {
-        if (isTruth(arr[i])) {
-          arrResult.push(arr[i]);
-        }
-      }
-    }
-  return arrResult;
-}
-
 function compact2v(arr) {
-  let arrResult = arr.filter(isTruth);
-
-  return arrResult;
+  return arr.filter(function(elem) {
+    return elem;
+  });
 }
 
 function sum1v(arr) {
@@ -67,28 +52,10 @@ function sum1v(arr) {
   return sum;
 }
 
-//It doesn't work for missed or wrong elements
 function sum2v(arr) {
-  const LENGTH_WITH_ADD_PAR = 2;
-  const IDX_ADD_PAR = 1;
-  const DIF_IDX_ELEM = 1;
-  const LAST_IDX = arr.length - DIF_IDX_ELEM;
-  
-  function summ(array) { //I entered inner function to not create constants every itself calling
-    let curIdx = 0;
-  
-    if (arguments.length == LENGTH_WITH_ADD_PAR) {
-      curIdx = arguments[IDX_ADD_PAR];
-    }
-    return curIdx <= LAST_IDX ? arr[curIdx] + summ(arr, curIdx + 1) : false;
-  }
-  return summ(arr);
-}
-
-function sum3v(arr) {
   return arr.reduce(function(acc, val) {
-                      return acc + val;
-                    });
+    return acc + val;
+  });
 }
 
 function unique1v(arr) {
