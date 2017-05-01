@@ -37,7 +37,7 @@ function range(lengthFrom, toNumb, stepNumb) {
   return arrResult;
 }
 
-function compact2v(arr) {
+function compact(arr) {
   return arr.filter(function(elem) {
     return elem;
   });
@@ -68,6 +68,12 @@ function unique1v(arr) {
     arrResult.push(arr[i]);
   }
   return arrResult;
+}
+
+function unique2v(arr) {
+  return arr.filter(function (value, index, array) {
+    return array.indexOf(value) === index;
+  });
 }
 
 function last(arr) {
