@@ -1,2 +1,6 @@
+~.*
 *.txt
+*.tmp
+*.temp
+*.bak
 test*.*

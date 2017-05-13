@@ -4,11 +4,17 @@
     <meta charset="utf-8">
   </head>
   <body>
-    <button onclick="new ArtistsList().load();">Get Artists List</button>
-    <button onclick="new ArtistInfo().load('Cher');">Get Artists Info</button>
-    <button onclick="new AlbumsList().load('Cher');">Get Albums List</button>
-    <button onclick="new AlbumInfo().load('Cher', 'Believe');">Get Album Info</button>
-    <button onclick="new ArtistSearch().load('Cher');">Test Artist Search</button>
-    <script src='js/allFunctions.js'></script>
+    <script src='js/loader.js'></script>
+    <script src='js/artistsList.js'></script>
+    <script src='js/artistInfo.js'></script>
+    <script src='js/albumsList.js'></script>
+    <script src='js/albumInfo.js'></script>
+    <script src='js/artistSearch.js'></script>
+
+    <button onclick="new ArtistsList();">Get Artists List</button>
+    <button onclick="new ArtistInfo('Cher');">Get Artist Info</button>
+    <button onclick="new AlbumsList('Cher');">Get Albums List</button>
+    <button onclick="new AlbumInfo('Cher', 'Believe');">Get Album Info</button>
+    <button onclick="new ArtistSearch('Cher');">Test Artist Search</button>
   </body>
 </html>
